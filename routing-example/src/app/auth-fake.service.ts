@@ -14,7 +14,7 @@ export class AuthFakeService {
             (resolve, reject) => {
                 setTimeout(()=> {
                     resolve(this.loggedIn)
-                },400);
+                },100);
             }
         );
         return promise;
