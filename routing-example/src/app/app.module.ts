@@ -10,20 +10,8 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
-import { Routes, RouterModule } from '@angular/router';
-
-const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  // adding nested routes
-  {path: 'users', component: UsersComponent, children:[
-    {path: ':id/:name', component: UserComponent}
-  ]},
-  {path: 'servers', component: ServersComponent, children: [
-    {path: ':id', component: ServerComponent},
-    {path: ':id/:edit', component: EditServerComponent}
-  ]},
- 
-]
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,12 +21,13 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule, 
+    AppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
