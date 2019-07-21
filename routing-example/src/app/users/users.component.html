@@ -2,10 +2,11 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
-        href="#"
         class="list-group-item"
-        *ngFor="let user of users">
+        *ngFor="let user of users"
+        [routerLink]="['/users',user.id,user.name]">
         {{ user.name }}
+        
       </a>
     </div>
   </div>

@@ -53,7 +53,25 @@ RouterLink
 
 <!-- ../ path: <a routerLink="../servers"></a> -->
 
-//adding activated route  and the router to natigate programmaticaly
+//adding activated route  and the router to navigate programmaticaly
+
 constructor(
      private router: Router,
      private route: ActivatedRoute)
+
+//navigating to relative path programatically, with  relativeTO
+  onReload(){
+  this.router.navigate(['/servers', {relativeTo: this.route}]);
+  }
+
+//when the route for the current component is called inside the component
+//it is necessary to subscribe to the route object
+//in order to catch the changes and refresh data displayed
+
+this.route.params
+            .subscribe(
+              (params: Params) =>{
+                this.user.id = params['id'];
+                this.user.name = params['name'];
+              }
+            );
