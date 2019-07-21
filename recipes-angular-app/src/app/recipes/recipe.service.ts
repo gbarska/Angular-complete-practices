@@ -7,9 +7,9 @@ export class RecipeService{
 
   private recipes: Recipe[] = [
         new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-        [new Ingredient('Apple',10),new Ingredient('Tomatoes',1)]),
+        [new Ingredient('Orange',10),new Ingredient('Sugar',1)]),
         new Recipe('Another Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-        [new Ingredient('Apple',10),new Ingredient('Tomatoes',1)])
+        [new Ingredient('Lemon',10),new Ingredient('Pasta',1)])
       ];
 
       getRecipes(){
