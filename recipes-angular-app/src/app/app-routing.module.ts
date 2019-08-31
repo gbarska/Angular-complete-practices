@@ -9,13 +9,13 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 
 const appRoutes: Routes = [
-    {path: '', component: RecipesComponent},
+    {path: '', component: RecipeStartComponent},
     {path: 'shopping', component: ShoppingListComponent},
     {path: 'recipes', component: RecipesComponent, children: [
+      {path: 'new', component: RecipeEditComponent},
       {path: ':id/edit', component: RecipeEditComponent},
       {path: ':id', component: RecipeDetailComponent},
-      {path: '', component: RecipeStartComponent}, 
-      {path: 'edit', component: RecipeEditComponent}
+      {path: '', component: RecipeStartComponent}
     ]}
   ]
 
