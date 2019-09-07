@@ -34,3 +34,8 @@ styling
 input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
   border: 1px solid red;
 }
+
+<span *ngIf="!fo?.valid && fo.touched">Please check the values and try again</span>
+
+default values, use property binding to output default values:
+ [ngModel]="'pet'"

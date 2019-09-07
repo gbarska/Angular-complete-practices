@@ -31,11 +31,19 @@
           <select
            id="secret"
            class="form-control"
-           ngModel
+           [ngModel]="'pet'"
            name="secret">
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
+
+          <textarea
+          rows="3"
+          class="form-control"
+          name="reply"
+          [(ngModel)]="resposta"
+          ></textarea>
+          <p>Your Reply: {{ resposta }}</p>
         </div>
         <!-- <span *ngIf="!fo.controls['email']?.valid">Please check the values and try again</span> -->
         <span *ngIf="!fo?.valid && fo.touched">Please check the values and try again</span>
