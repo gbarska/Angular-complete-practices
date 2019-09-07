@@ -10,6 +10,15 @@ export class AppComponent {
   @ViewChild('fo') myForm: NgForm;
   resposta = "";  
   genders = ['male','female'];
+  
+  user = {
+    username: '',
+    email: '',
+    reply: '',
+    gender: '' 
+  };
+
+  submitted = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -40,6 +49,16 @@ export class AppComponent {
 
   // accessing the form with viewchild
   onSubmit(form: NgForm){
-      console.log(this.myForm);
+    this.submitted = true;
+    this.user.username = this.myForm.value.userData.username; 
+    this.user.email = this.myForm.value.userData.email; 
+    this.user.gender = this.myForm.value.gender; 
+    this.user.reply = this.myForm.value.reply; 
+    console.log(this.myForm);
+
+    this.myForm.reset();
     }
+
+
+
 }
