@@ -39,3 +39,9 @@ input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
 
 default values, use property binding to output default values:
  [ngModel]="'pet'"
+
+
+ two way binding:
+ [(ngModel)]="variable"
+
+ 
