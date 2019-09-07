@@ -16,3 +16,21 @@ submiting the form, special event offered by angular:
 
 getting the form reference:
 <form (ngSubmit)="onSubmit(form)" #form>
+
+accessing the javascript representation
+<form (ngSubmit)="onSubmit(fo)" #fo="ngForm" >
+
+built in validations derictives : required and email
+<input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              email>
+
+styling 
+input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
+  border: 1px solid red;
+}

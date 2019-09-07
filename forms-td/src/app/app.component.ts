@@ -18,6 +18,6 @@ export class AppComponent {
 
   // accessing the form with viewchild
   onSubmit(form: NgForm){
-      console.log(this.myForm);
+      console.log(this.myForm.controls['email']);
     }
 }

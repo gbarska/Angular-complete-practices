@@ -37,6 +37,9 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
+        <!-- <span *ngIf="!fo.controls['email']?.valid">Please check the values and try again</span> -->
+        <span *ngIf="!fo?.valid && fo.touched">Please check the values and try again</span>
+        <br>
         <button
          class="btn btn-primary"
          type="submit"
