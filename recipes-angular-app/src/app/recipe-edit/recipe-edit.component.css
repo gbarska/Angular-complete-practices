@@ -1,0 +1,11 @@
+/* input.form-control{
+    margin: 5px 0px ;
+}
+
+div.row button.btn-danger{
+    margin: 5px 0px ;
+} */
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
