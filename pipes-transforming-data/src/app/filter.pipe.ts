@@ -11,12 +11,16 @@ export class FilterPipe implements PipeTransform {
         return value;
       }
       const resultArray = [];
+      // for(const item of value){  
+      //   if(item[propName] === filterString ){
+      //     resultArray.push(item);
+      //   }       
+      // }
+      //filter by first letters doesn't require the entire word
       for(const item of value){
-      
-        if(item[propName] === filterString ){
+        if(item[propName].toUpperCase().startsWith(filterString.toUpperCase(),0) ){
           resultArray.push(item);
         }
-       
       }
       return resultArray;
   }
