@@ -52,4 +52,9 @@ authObs.
 form.reset();    
 }
 
+
+onHandleError() {
+  this.error = null;
+}
+
 }
