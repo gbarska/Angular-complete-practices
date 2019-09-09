@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Post } from './post.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts : Post[] = [];
+  isFetching = false;
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +21,7 @@ export class AppComponent implements OnInit {
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://angular-guide-aeeab.firebaseio.com/posts.json',
         postData
       )
@@ -30,8 +32,10 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
-    this.http.get('https://angular-guide-aeeab.firebaseio.com/posts.json')
-    .pipe(map( data => {
+    this.isFetching = true;
+    this.http.get< { [ key: string ]: Post } >('https://angular-guide-aeeab.firebaseio.com/posts.json')
+    .pipe(
+      map( data => {
       const postArray = [];
       for(const item in data){
         if(data.hasOwnProperty(item)){
@@ -42,7 +46,9 @@ export class AppComponent implements OnInit {
       return postArray;
     }))
       .subscribe( posts => {
-        console.log(posts);
+        // console.log(posts);
+        this.loadedPosts = posts;
+        this.isFetching = false;
       });
   }
 
