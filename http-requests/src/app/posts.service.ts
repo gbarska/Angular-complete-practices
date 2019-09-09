@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/common/http';
 import { Post } from './post.model';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 
 @Injectable({
@@ -21,7 +21,10 @@ export class PostsService{
         this.http
         .post<{ name: string }>(
           'https://angular-guide-aeeab.firebaseio.com/posts.json',
-          postData
+          postData,
+          {
+              observe: 'response'
+          }
         )
         .subscribe(responseData => {
           console.log(responseData);
@@ -35,11 +38,13 @@ export class PostsService{
         searchParams = searchParams.append('print','pretty');
         searchParams = searchParams.append('custom','key');
 
-       return this.http.get< { [ key: string ]: Post } >(
+       return this.http.get(
         'https://angular-guide-aeeab.firebaseio.com/posts.json',
         {
             headers: new HttpHeaders({'Custom-Header': 'Hello'}),
             params: searchParams
+            //its also possible to change the response type from json to text for example
+            // responseType: 'text'
         })
         .pipe(
           map( data => {
@@ -59,6 +64,15 @@ export class PostsService{
     }
 
     delete(){
-        return this.http.delete('https://angular-guide-aeeab.firebaseio.com/posts.json');
+        return this.http.delete('https://angular-guide-aeeab.firebaseio.com/posts.json',
+        {
+            observe: 'events'
+        })
+        .pipe(tap(event => {
+            if(event.type === HttpEventType.Response)
+            console.log(event.body);
+            if(event.type === HttpEventType.Sent)
+            console.log("REQUEST SENT");
+        }));
     }
 }
