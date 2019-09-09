@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
    console.log(!!user); 
   });
   }
-
+  onLogout(){
+    this.authService.logout();
+  }
   onSaveData(){
     this.dataStorageService.save();
   }
