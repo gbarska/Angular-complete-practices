@@ -11,7 +11,7 @@ import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
-    {path: '', component: RecipeStartComponent},
+    {path: '', component: AuthComponent},
     {path: 'shopping', component: ShoppingListComponent},
     {path: 'auth', component: AuthComponent},
     {path: 'recipes', component: RecipesComponent, children: [
