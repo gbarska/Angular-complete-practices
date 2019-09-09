@@ -12,7 +12,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-    {path: '', component: AuthComponent},
+    {path: '', component: RecipeStartComponent,  resolve: [RecipesResolverService]},
     {path: 'shopping', component: ShoppingListComponent},
     {path: 'auth', component: AuthComponent},
     {
