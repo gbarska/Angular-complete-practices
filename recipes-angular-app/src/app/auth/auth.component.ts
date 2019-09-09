@@ -35,7 +35,7 @@ if (this.isLogin){
   authObs = this.authService.login(email,password);
 }else{
 
-  authObs = this.authService.signUp(email,password);
+  authObs = this.authService.signup(email,password);
 }
 authObs.
     subscribe(response => {
