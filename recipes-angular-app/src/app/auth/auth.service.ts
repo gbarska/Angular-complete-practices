@@ -51,6 +51,8 @@ user = new BehaviorSubject<User>(null);
         }));
     }
 
+
+
     private handleError(error: HttpErrorResponse){
         let errorMsg  = 'An unknown error ocurred!';
         if ( !error.error || !error.error.error  ){
