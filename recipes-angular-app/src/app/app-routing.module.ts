@@ -1,11 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { RecipesResolverService } from './recipes/recipes-resolver.service';
-import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
-    {path: '', component: RecipeStartComponent,  resolve: [RecipesResolverService]}
+    {path: '',redirectTo:'/recipes', pathMatch:  'full'},
+    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+    { path: 'shopping', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule' },
+    { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
   ]
 
 @NgModule({
